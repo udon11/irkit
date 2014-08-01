@@ -1,20 +1,16 @@
 <?php
-# require command define
+# コマンド一覧の配列を読み込む
 require_once('/var/www/define.php');
 
-# get Date
-$date = '['.date('Ymd H:i:s', time()).']';
-
 # set GET message
-# 複数のコマンド
 $cmds = array();
-if (isset($_GET['cmds'])) {    
+if (isset($_GET['cmds'])) {  # 複数のコマンド
     foreach ($_GET['cmds'] as $cmd) {
         $cmds[] = $cmd;
     }
 }
-# 単独のコマンド
-if (isset($_GET['cmd'])) { 
+
+if (isset($_GET['cmd'])) {  # 単独のコマンド
     $cmds[] = $_GET['cmd'];
 }
 
@@ -24,6 +20,7 @@ if (isset($argv[1])) {
 }
 
 # 実行コマンドのログを吐く
+$date = '['.date('Ymd H:i:s', time()).']';
 error_log($date.' : commands = '.print_r($cmds,true)."\n",3,'/var/log/homeControl/homeControl.log');
 
 # exec Commands
@@ -32,19 +29,16 @@ foreach($cmds as $cmd){
 	if ($message) {
 		execCurl($clientkey, $deviceid, $message);
 	}
-	sleep(2);
 }
+// トップページへ遷移
+moveTop();
 
-//ページトップへ戻る(JavaScript)
-echo '
-<script type="text/javascript" language="JavaScript">
-<!--
-document.location = "/homeControl/";
--->
-</script>
-';
 
-function getMessage($cmd,$define){
+/**
+ * 受け取ったコマンドをマッピング
+ *
+ */
+function getMessage($cmd, $define) {
 	$message = null;
 	switch ($cmd) {
 		# for Light
@@ -99,18 +93,32 @@ function getMessage($cmd,$define){
 	return $message;
 }
 
-function execCurl($clientkey, $deviceid, $message){
+function execCurl($clientkey, $deviceid, $message) {
 	$postFields = array('clientkey' => $clientkey,
 			    'deviceid'  => $deviceid,
 		            'message'   => $message);
 
 	# exec curl
 	$cc = curl_init('https://api.getirkit.com/1/messages/'); 
-		curl_setopt($cc, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($cc, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($cc, CURLOPT_HEADER, true);
 	curl_setopt($cc, CURLOPT_POST, true);
 	curl_setOpt($cc, CURLOPT_POSTFIELDS, $postFields);
 
-	var_export(curl_exec($cc));
+	curl_exec($cc);
 	curl_close($cc);
+}
+
+/** 
+ * ページトップへ戻る(JavaScript)
+ *
+ */
+function moveTop() {
+    echo '
+<script type="text/javascript" language="JavaScript">
+<!--
+document.location = "/homeControl/";
+-->
+</script>
+';
 }
