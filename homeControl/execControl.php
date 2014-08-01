@@ -6,13 +6,15 @@ require_once('/var/www/define.php');
 $date = '['.date('Ymd H:i:s', time()).']';
 
 # set GET message
+# 複数のコマンド
 $cmds = array();
-if (isset($_GET['cmds'])) { //複数のコマンド
+if (isset($_GET['cmds'])) {    
     foreach ($_GET['cmds'] as $cmd) {
         $cmds[] = $cmd;
     }
 }
-if (isset($_GET['cmd'])) { //単独のコマンド
+# 単独のコマンド
+if (isset($_GET['cmd'])) { 
     $cmds[] = $_GET['cmd'];
 }
 
