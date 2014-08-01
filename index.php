@@ -72,6 +72,7 @@ table{
 <ul>
     <li><a class="btn" href="/homeControl/execControl.php?cmds[]=light_on&cmds[]=fan_power&cmds[]=air_on">ON</a></li>
     <li><a class="btn" href="/homeControl/execControl.php?cmds[]=light_off&cmds[]=fan_power&cmds[]=air_off">OFF</a></li>
+    <li><a class="btn" href="/homeControl/execControl.php?cmds[]=fan_timer&cmds[]=fan_timer&cmds[]=fan_timer&cmds[]=fan_light&cmds[]=air_on&cmds[]=light_off">SLEEP</a></li>
 </ul>
 </td></tr>
 

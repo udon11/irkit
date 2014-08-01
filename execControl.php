@@ -1,6 +1,6 @@
 <?php
 # require command define
-require_once('define.php');
+require_once('/var/www/define.php');
 
 # get Date
 $date = '['.date('Ymd H:i:s', time()).']';
@@ -30,9 +30,10 @@ foreach($cmds as $cmd){
 	if ($message) {
 		execCurl($clientkey, $deviceid, $message);
 	}
+	sleep(2);
 }
 
-//ページトップへ戻る
+//ページトップへ戻る(JavaScript)
 echo '
 <script type="text/javascript" language="JavaScript">
 <!--
