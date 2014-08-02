@@ -1,8 +1,17 @@
 <?php
-# コマンド一覧の配列を読み込む
-require_once('/var/www/define.php');
+/**
+ *  IRKitへコマンドを実行するためのスクリプト
+ *  $clientkey, $deviceid, $messageは'define.php'で定義します
+ *
+ *      $clientKey  string 
+ *      $deviceId   string
+ *      $message    array
+ */
 
-# set GET message
+# APIを投げるために必要な$clientKey, $deviceId, $messageを読み込む
+require_once dirname(__FILE__).'/../../define.php';
+
+# GETで受け取ったコマンドをセット
 $cmds = array();
 if (isset($_GET['cmds'])) {  # 複数のコマンド
     foreach ($_GET['cmds'] as $cmd) {
@@ -10,11 +19,13 @@ if (isset($_GET['cmds'])) {  # 複数のコマンド
     }
 }
 
+# TODO; 削除予定
 if (isset($_GET['cmd'])) {  # 単独のコマンド
     $cmds[] = $_GET['cmd'];
 }
 
-# set POST message
+# POSTで受け取ったコマンドをセット
+# TODO: 複数対応
 if (isset($argv[1])) {
     $cmds[] = $argv[1];
 }
@@ -30,9 +41,8 @@ foreach($cmds as $cmd){
 		execCurl($clientkey, $deviceid, $message);
 	}
 }
-// トップページへ遷移
+# トップページへ遷移
 moveTop();
-
 
 /**
  * 受け取ったコマンドをマッピング
