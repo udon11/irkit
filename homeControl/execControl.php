@@ -53,8 +53,12 @@ function getMessage($cmd, $define) {
 	switch ($cmd) {
 		# for Light
 		case 'light_on':
-			$message = $define['light_on'];
+            // 19:00〜4:00は暖色系の色にする
+            $date = date('Gi', time());
 			$message = $define['light_cool'];
+            if ('1900' < $date || $date < '400') {
+                $message = $define['light_on'];
+            }
 			break;
 		case 'light_off':
 			$message = $define['light_off'];
