@@ -54,6 +54,7 @@ function getMessage($cmd, $define) {
 		# for Light
 		case 'light_on':
 			$message = $define['light_on'];
+			$message = $define['light_cool'];
 			break;
 		case 'light_off':
 			$message = $define['light_off'];
