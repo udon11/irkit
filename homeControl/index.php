@@ -37,7 +37,7 @@ li{
     padding: 73 0;
 }
 .hour {
-    margin: 10 70; 
+    margin: 10 30; 
     font-size: 30px;
 }
 #light{
