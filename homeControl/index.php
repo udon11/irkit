@@ -36,6 +36,10 @@ li{
     width: 210;
     padding: 73 0;
 }
+.hour {
+    margin: 10 70; 
+    font-size: 40px;
+}
 #light{
     background-color: #33474e; 
 }
@@ -85,10 +89,24 @@ table{
 </td></tr>
 
 <td class=title>AirControl</td>
+    <option value='JKL'>じぇーけーえる</option>
+</select>
+</td>
+</tr>
 <tr class=bottomBorder><td>
 <ul>
-    <li><a class="btn" id=airCtrl href="/homeControl/execControl.php?cmd=air_on">COOL</a></li>
-    <li><a class="btn" id=airCtrl href="/homeControl/execControl.php?cmd=air_dry">DRY</a></li>
+    <li><a class="btn" id=airCtrl href="/homeControl/execControl.php?cmd=air_on">COOL</a>
+    <select class='hour' align=center>
+        <option value='1hour'>1 hour</option>
+        <option value='3hour' selected>3 hour</option>
+        <option value='6hour'>6 hour</option>
+    </select></li>
+    <li><a class="btn" id=airCtrl href="/homeControl/execControl.php?cmd=air_dry">DRY</a>
+    <select class='hour' align=center>
+        <option value='1hour'>1 hour</option>
+        <option value='3hour' selected>3 hour</option>
+        <option value='6hour'>6 hour</option>
+    </select></li>
     <li><a class="btn" id=airCtrl href="/homeControl/execControl.php?cmd=air_off">OFF</a></li>
 </ul>
 </td></tr>
