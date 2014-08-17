@@ -79,6 +79,9 @@ function getMessage($cmd, $define) {
 		case 'air_on':
 			$message = $define['airControl_on'];
 			break;
+		case 'air_dry':
+			$message = $define['airControl_dry'];
+			break;
 		case 'air_off':
 			$message = $define['airControl_off'];
 			break;

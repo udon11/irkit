@@ -87,7 +87,8 @@ table{
 <td class=title>AirControl</td>
 <tr class=bottomBorder><td>
 <ul>
-    <li><a class="btn" id=airCtrl href="/homeControl/execControl.php?cmd=air_on">ON</a></li>
+    <li><a class="btn" id=airCtrl href="/homeControl/execControl.php?cmd=air_on">COOL</a></li>
+    <li><a class="btn" id=airCtrl href="/homeControl/execControl.php?cmd=air_dry">DRY</a></li>
     <li><a class="btn" id=airCtrl href="/homeControl/execControl.php?cmd=air_off">OFF</a></li>
 </ul>
 </td></tr>
