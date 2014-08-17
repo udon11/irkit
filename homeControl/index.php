@@ -38,7 +38,7 @@ li{
 }
 .hour {
     margin: 10 70; 
-    font-size: 40px;
+    font-size: 30px;
 }
 #light{
     background-color: #33474e; 
